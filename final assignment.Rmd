@@ -52,10 +52,25 @@ view(student_data)
 
 ```
 ```{r}
-student_data2 <- student_data[,-1]
+student_data2 <- student_data[,-1] # converted the student names into row names
 rownames(student_data2) <- student_data[,1]
-student_data2
 view(student_data2)
+
+# creating new columns to do calculations
+
+SumperStudent <- rowSums(student_data2[,c("Course1","Course2","Course3","Course4","Course5","Course6")])
+
+MeanperStudent <- rowMeans(student_data2[,c("Course1","Course2","Course3","Course4","Course5","Course6")])
+
+SDperStudent <- apply(student_data2, 1, sd)
+
+SumperStudent # sum score per student
+
+SDperStudent # standard deviation per student
+
+student_data2 %>% mutate(SumperStudent, MeanperStudent, SDperStudent) %>% head(5)
+
+student_data2 # viewing the object in a separate window
 ```
 
 
