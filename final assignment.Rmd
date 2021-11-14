@@ -116,3 +116,86 @@ student_data$row_sums <- rowSums(student_data[,c("Course1","Course2","Course3","
 student_data$row_sums <- apply(student_data[,-1], 1, sum)
 ```
 
+Plotting!
+
+
+## Create a histogram in numbers of marks
+```{r}
+ggplot(..., aes(x=.....)) + 
+  geom_histogram() 
+```
+
+## Create a histogram in %
+```{r}
+ggplot(..., aes(x=.....)) + 
+  geom_histogram() 
+```
+
+## Create a graph with the overall distribution of marks
+```{r}
+p1 <- ggplot(....., aes(x=....., y=......)) +
+  geom_line(color="#69b3a2", size=2)
+p2 <- ggplot(...., aes(x=...., y=.....)) +
+  geom_line(color="grey",size=2)
+p1 + p2 
+```
+
+## Create a graph with the overall distribution of marks in %
+```{r}
+p3 <- ggplot(....., aes(x=....., y=......)) +
+  geom_line(color="#69b3a2", size=2)
+p4 <- ggplot(...., aes(x=...., y=.....)) +
+  geom_line(color="grey",size=2)
+p3 + p4
+```
+
+## Create a graph with the mean grade by student
+```{r}
+ggplot(....., aes(x=....., y=......)) +
+  geom_line()
+```
+
+## Create a graph with the mean grade by course
+```{r}
+ggplot(....., aes(x=....., y=......)) +
+  geom_line()
+```
+
+## Create a graph with the std of grades by student
+```{r}
+ggplot(....., aes(x=....., y=......)) +
+  geom_line()
+```
+
+## Create a graph with the std of grades by course
+```{r}
+ggplot(....., aes(x=....., y=......)) +
+  geom_line()
+```
+
+## Create a graph with the skewness of grades by student
+```{r}
+ggplot(....., aes(x=....., y=......)) +
+  geom_line()
+```
+
+## Create a graph with the skewness of grades by course
+```{r}
+ggplot(....., aes(x=....., y=......)) +
+  geom_line()
+```
+
+## Create a graph with the kurtosis of grades by student
+```{r}
+ggplot(....., aes(x=....., y=......)) +
+  geom_line()
+```
+
+## Create a graph with the kurtosis of grades by course
+```{r}
+ggplot(....., aes(x=....., y=......)) +
+  geom_line()
+```
+
+
+
