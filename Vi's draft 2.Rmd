@@ -1,6 +1,6 @@
 ---
 title: "Foundation Mathematics & Statistics in R"
-author: Vi Tu (617634), Khoa Nguyen (), Amir Mohamed ()
+author: Vi Tu (617634), Khoa Nguyen (617102), Amir Mohamed (513528)
 output: html_notebook
 ---
 ```{r}
@@ -27,6 +27,7 @@ library(matrixStats)
 library(e1071)
 ```
 
+
 ```{r}
 # Create a data frame based on the Excel file
 Students <- c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k")
@@ -41,12 +42,13 @@ str(student_data)
 view(student_data)
 ```
 
+
 ```{r}
 # Convert the student names into row names
 student_data2 <- student_data[,-1]
 rownames(student_data2) <- student_data[,1]
 view(student_data2)
-student_data <- student_data2
+total <- student_data[,-1]
 ```
 
 ```{r}
@@ -106,14 +108,39 @@ MoM_Student <- data.frame(meanS, SdS, SkS, KuS) #Create data frame for MoM per S
 View(MoM_Student)
 
 # Total dataframe
-meanT = apply(student_data, 1, mean)
-SdT = apply(student_data, 1, sd)
-SkT = apply(student_data, 1, skewness)
-KuT = apply(student_data, 1, kurtosis)
+meanT = apply(total, 1, mean)
+SdT = apply(total, 1, sd)
+SkT = apply(total, 1, skewness)
+KuT = apply(total, 1, kurtosis)
 
 MoM_Total <- data.frame(meanT, SdT, SkT, KuT)
 View(MoM_Total)
 ```
 
-
 Plotting
+```{r}
+## Create a graph with the mean grade by student
+
+ggplot(....., aes(x=....., y=......)) +
+  geom_line()
+```
+
+## Create a graph with the mean grade by course
+```{r}
+ggplot(....., aes(x=....., y=......)) +
+  geom_line()
+```
+
+## Create a graph with the std of grades by student
+```{r}
+ggplot(....., aes(x=....., y=......)) +
+  geom_line()
+```
+
+## Create a graph with the std of grades by course
+```{r}
+ggplot(....., aes(x=....., y=......)) +
+  geom_line()
+```
+
+
