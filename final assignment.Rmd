@@ -116,6 +116,76 @@ student_data$row_sums <- rowSums(student_data[,c("Course1","Course2","Course3","
 student_data$row_sums <- apply(student_data[,-1], 1, sum)
 ```
 
+creating functions and loops and statements
+```{r}
+
+MeanperStudentsTrue <- apply(student_data2[,1:6], 1, mean) # we applied the mean of all the courses of student a in a column
+MeanperStudentsTrue
+
+
+meanpercourse <- apply(student_data2[1:11,], 2, mean) # we applied the mean of all the courses of student a in a column
+meanpercourse # it works
+
+
+skewpercourse <- apply(student_data2[1:11,], 2, skewness) # we applied the skew of all the courses of student a in a column
+
+skewpercourse # function needs to be created
+
+sdpercourse <- apply(student_data2[1:11,1:6], 2, sd) # we applied the sd of all the courses of student a in a column
+sdpercourse #  function needs to be created
+
+# Kurtosis function needs to be created
+
+add the bin, cumulative and frequency dataframe
+
+```
+```{r}
+# this chunk is useless for now
+
+for (number in 1:5){
+  result[number] <- 25  # we can put anything here so we can use the SD, Kur and Skew calculations here
+}
+
+
+# an attempt to create loop function
+
+ # result3 <- c()
+ # 
+ # for (number in 1:1){
+ #   result[number] <- 6.14 - 6.43
+ #   result <- result^2
+ #   result2 <- mean(result2)
+ #   result3 <- sqrt(result3)
+ # }
+ # 
+ # result4
+# sumCourse1 <- sum(Course1)
+# sqdifcourse1 <- mean(Course1) 
+
+
+
+```
+
+
+Remove intersect values to NA?
+
+```{r}
+# fixed (but has to be updated once the dataframe is complete)
+
+student_data2[12, 7] = NA # 1 single observation has been changed
+view(student_data2)
+student_data2$SumperStudents[12:16] = NA # certain part of a row
+student_data2$MeanperStudents[12:16] = NA
+student_data2$SdperStudents[12:16] = NA
+student_data2$SkewperStudents[12:16] = NA
+student_data2$KurtosisperStudents[12:16] = NA
+view(student_data2)
+
+
+```
+
+
+
 Plotting!
 
 
