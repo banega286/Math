@@ -108,39 +108,86 @@ MoM_Student <- data.frame(meanS, SdS, SkS, KuS) #Create data frame for MoM per S
 View(MoM_Student)
 
 # Total dataframe
-meanT = apply(total, 1, mean)
-SdT = apply(total, 1, sd)
-SkT = apply(total, 1, skewness)
-KuT = apply(total, 1, kurtosis)
-
+meanT = mean(as.matrix(total))
+SdT = sd(as.matrix(total))
+SkT = skewness(as.matrix(total))
+KuT = kurtosis(as.matrix(total))
 MoM_Total <- data.frame(meanT, SdT, SkT, KuT)
 View(MoM_Total)
 ```
 
 Plotting
 ```{r}
-## Create a graph with the mean grade by student
+dfgraphS <- data.frame(Students,MeanperStudent,SDperStudent,SkewperStudent,KurtosisperStudent)
+View(dfgraphS)
 
-ggplot(....., aes(x=....., y=......)) +
-  geom_line()
+Course <- as.character(c(1:6))
+dfgraphC <- data.frame(Course,MeanperCourse,SDperCourse,SkewperCourse,KurtosisperCourse)
+View(dfgraphC)
+```
+
+
+```{r}
+## Create a graph with the mean grade by student
+ggplot(dfgraphS, aes(Students, MeanperStudent, group = 1)) +
+       geom_point(color = "blue") + geom_line(color = "blue") +
+       geom_smooth(method=lm, se=FALSE, col='red') +  ylim(0,10) +
+       labs(x = "Students", y = "Mean grade", title = "Mean grade by Student")
 ```
 
 ## Create a graph with the mean grade by course
 ```{r}
-ggplot(....., aes(x=....., y=......)) +
-  geom_line()
+ggplot(dfgraphC, aes(Course, MeanperCourse, group = 1)) +
+        geom_point(color = "blue") + geom_line(color = "blue") +
+        geom_smooth(method=lm, se=FALSE, col='red') + ylim(0,10) +
+        labs(x = "Course", y = "Mean grade", 
+             title = "Mean grade by Course")
 ```
 
 ## Create a graph with the std of grades by student
 ```{r}
-ggplot(....., aes(x=....., y=......)) +
-  geom_line()
+ggplot(dfgraphS, aes(Students, SDperStudent, group = 1)) +
+       geom_point(color = "blue") + geom_line(color = "blue") +
+       geom_smooth(method=lm, se=FALSE, col='red') + ylim(0,4) +
+       labs(x = "Students", y = " Standard deviation of grades", title = "Standard deviation of grades by Student")
 ```
 
 ## Create a graph with the std of grades by course
 ```{r}
-ggplot(....., aes(x=....., y=......)) +
-  geom_line()
+ggplot(dfgraphC, aes(Course, SDperCourse, group = 1)) +
+       geom_point(color = "blue") + geom_line(color = "blue") +
+       geom_smooth(method=lm, se=FALSE, col='red') + ylim(0,4) +
+       labs(x = "Course", y = " Standard deviation of grades", title = "Standard deviation of grades by Course")
 ```
 
+## Create a graph with the skewness of grades by student
+```{r}
+ggplot(dfgraphS, aes(Students, SkewperStudent, group = 1)) +
+       geom_point(color = "blue") + geom_line(color = "blue") +
+       geom_smooth(method=lm, se=FALSE, col='red') + ylim(-2,1) +
+       labs(x = "Students", y = " Skewness of grades", title = "Skewness of grades by Student")
+```
 
+## Create a graph with the skewness of grades by course
+```{r}
+ggplot(dfgraphC, aes(Course, SkewperCourse, group = 1)) +
+       geom_point(color = "blue") + geom_line(color = "blue") +
+       geom_smooth(method=lm, se=FALSE, col='red') + ylim(-2,1) +
+       labs(x = "Course", y = " Skewness of grades", title = "Skewness of grades by Course")
+```
+
+## Create a graph with the kurtosis of grades by student
+```{r}
+ggplot(dfgraphS, aes(Students, KurtosisperStudent, group = 1)) +
+       geom_point(color = "blue") + geom_line(color = "blue") +
+       geom_smooth(method=lm, se=FALSE, col='red') + ylim(-3,1) +
+       labs(x = "Students", y = " Kurtosis of grades", title = "Kurtosis of grades by Student")
+```
+
+## Create a graph with the kurtosis of grades by course
+```{r}
+ggplot(dfgraphC, aes(Course, KurtosisperCourse, group = 1)) +
+       geom_point(color = "blue") + geom_line(color = "blue") +
+       geom_smooth(method=lm, se=FALSE, col='red') + ylim(-3,0) +
+       labs(x = "Course", y = " Kurtosis of grades", title = "Kurtosis of grades by Course")
+```
