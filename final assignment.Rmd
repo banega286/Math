@@ -123,7 +123,7 @@ MeanperStudentsTrue <- apply(student_data2[,1:6], 1, mean) # we applied the mean
 MeanperStudentsTrue
 
 
-meanpercourse <- apply(student_data2[1:11,], 2, mean) # we applied the mean of all the courses of student a in a column
+meanpercourse <- apply(student_data2[1:11,], 2, mean) # we applied the mean of all the courses of all the students in a vector and attached it to an object called
 meanpercourse # it works
 
 
